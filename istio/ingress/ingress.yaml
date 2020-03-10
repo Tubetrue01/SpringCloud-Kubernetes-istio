@@ -5,7 +5,7 @@ metadata:
   name: nginx-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-  namespace: istio-system
+  namespace: istio-system    # Notice the namespace must be same with gateway service namespace
 spec:
   rules:
     - host: my.test.com
@@ -15,3 +15,36 @@ spec:
             backend:
               serviceName: istio-ingressgateway
               servicePort: 80
+---
+# You can update gateway service by using cluster-ip instead of loadbalancer service by followings
+apiVersion: v1
+kind: Service
+metadata:
+  name: istio-ingressgateway
+  namespace: istio-system
+  labels:
+    app: istio-ingressgateway
+    istio: ingressgateway
+    release: istio
+spec:
+  selector:
+    app: istio-ingressgateway
+    istio: ingressgateway
+
+  ports:
+    - name: status-port
+      port: 15020
+    - name: http2
+      port: 80
+    - name: https
+      port: 443
+    - name: kiali
+      port: 15029
+    - name: prometheus
+      port: 15030
+    - name: grafana
+      port: 15031
+    - name: tracing
+      port: 15032
+    - name: tls
+      port: 15443
