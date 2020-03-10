@@ -1,0 +1,17 @@
+# You can use nginx-ingress to proxy the gateway of istio to avoid expose the node port if you not have external loadbalancer
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  namespace: istio-system
+spec:
+  rules:
+    - host: my.test.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: istio-ingressgateway
+              servicePort: 80
