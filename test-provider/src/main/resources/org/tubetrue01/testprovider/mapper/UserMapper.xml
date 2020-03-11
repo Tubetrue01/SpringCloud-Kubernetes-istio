@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tubetrue01.testprovider.mapper.UserMapper">
+   <select id="selectAll" resultType="org.tubetrue01.pojo.User">
+      SELECT * FROM user_info
+   </select>
+
+   <insert id="insert" parameterType="org.tubetrue01.pojo.User">
+      INSERT INTO
+         user_info (username, password)
+      VALUES (#{username}, #{password})
+   </insert>
+</mapper>
