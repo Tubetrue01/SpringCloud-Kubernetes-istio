@@ -1,0 +1,14 @@
+<Generate Checklist>
+istioctl manifest generate --set values.global.mtls.enabled=true --set values.global.jwtPolicy=first-party-jwt > /Users/tubetrue01/Desktop/kubectl/istio/generated-manifest.yaml
+
+<Install>
+istioctl manifest apply --set values.global.mtls.enabled=true --set values.global.jwtPolicy=first-party-jwt
+
+<Verify instally>
+istioctl verify-install -f /Users/tubetrue01/Desktop/kubectl/istio/generated-manifest.yaml
+
+
+<Delete>
+istioctl manifest generate --set values.global.mtls.enabled=true --set values.global.jwtPolicy=first-party-jwt | kubectl delete -f -
+
+
