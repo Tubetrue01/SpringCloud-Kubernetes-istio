@@ -3,9 +3,19 @@ spring:
     name: test-provider
   cloud:
     kubernetes:
+      reload:
+        enabled: true
+        monitoring-config-maps: true
+        mode: event
+        strategy: refresh
       config:
         name: test-provider
         namespace: zpf
         enabled: true
       secrets:
         paths: /etc/secrets/test-provider
+# Must enable the refresh when you enable the hot reload of kubernetes
+management:
+  endpoint:
+    refresh:
+      enabled: true
