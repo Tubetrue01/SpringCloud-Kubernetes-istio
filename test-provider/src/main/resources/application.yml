@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: test-provider
+  cloud:
+    kubernetes:
+      config:
+        name: test-provider
+        namespace: zpf
+        enabled: true

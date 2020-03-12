@@ -18,24 +18,67 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
+        <commons.version>1.0.0</commons.version>
+        <mybatis.version>2.1.1</mybatis.version>
+        <log4j.web.version>2.13.0</log4j.web.version>
+        <kubenetes.version>1.1.2.RELEASE</kubenetes.version>
     </properties>
 
+    <modules>
+        <module>commons</module>
+        <module>test-provider</module>
+    </modules>
 
     <dependencies>
+        <!-- Log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+        <!-- Log4j web -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j.web.version}</version>
+        </dependency>
+
+        <!-- Exclude the logback -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
 
-            <!-- SpringCloud Dependency-->
+            <!-- Mybatis-->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <!-- Commons -->
+            <dependency>
+                <groupId>org.tubetrue01</groupId>
+                <artifactId>commons</artifactId>
+                <version>${commons.version}</version>
             </dependency>
 
             <!-- SpringBoot Dependency-->
@@ -43,6 +86,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Kubernetes Dependency-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-kubernetes-dependencies</artifactId>
+                <version>${kubenetes.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

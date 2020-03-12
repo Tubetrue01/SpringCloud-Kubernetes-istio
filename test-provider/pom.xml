@@ -6,23 +6,25 @@
         <groupId>org.tubetrue01</groupId>
         <artifactId>cloud</artifactId>
         <version>1.0.0</version>
-        <relativePath/>
     </parent>
+
     <artifactId>test-provider</artifactId>
     <version>1.0.0</version>
     <name>TestProvider</name>
+    <packaging>jar</packaging>
 
     <dependencies>
+
+        <!-- Config -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-kubernetes-config</artifactId>
+        </dependency>
+
         <!-- AOP -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <!-- JDBC -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
         <!-- MySQL -->
