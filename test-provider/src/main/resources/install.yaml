@@ -39,6 +39,9 @@ spec:
           image: tubetrue01/test-provider:v1
           ports:
             - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "pro"
           resources:
             limits:
               cpu: 1000m

@@ -12,13 +12,22 @@ data:
     spring:
       application:
         name: user-provider
-      datasource:
-        url: jdbc:mysql://192.168.0.112:3306/test?allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
-        password: root
-        username: root
     mybatis:
       type-aliases-package: org.tubetrue01.pojo
       configuration:
         map-underscore-to-camel-case: true
         default-statement-timeout: 6000
-
+    ---
+    spring:
+      profiles: dev
+      datasource:
+        url: jdbc:mysql://192.168.0.112:3306/test?allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+        password: root
+        username: root
+    ---
+     spring:
+       profiles: pro
+       datasource:
+          url: jdbc:mysql://192.168.0.112:3306/cloud?allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+          password: root
+          username: root
