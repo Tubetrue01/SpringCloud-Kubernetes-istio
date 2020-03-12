@@ -6,6 +6,7 @@ spring:
       reload:
         enabled: true
         monitoring-config-maps: true
+        monitoring-secrets: true
         mode: event
         strategy: refresh
       config:
@@ -13,7 +14,11 @@ spring:
         namespace: zpf
         enabled: true
       secrets:
-        paths: /etc/secrets/test-provider
+        enabled: true
+        enable-api: true  # Consuming Secrets through the API is not enabled by default, so you need enable it explicitly, in preceding,you must mount it to use and you need to set the rbac before do it
+        name: test-provider
+        namespace: zpf
+#       paths: /etc/secrets/test-provider
 # Must enable the refresh when you enable the hot reload of kubernetes
 management:
   endpoint:

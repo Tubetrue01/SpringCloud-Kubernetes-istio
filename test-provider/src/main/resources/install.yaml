@@ -50,17 +50,17 @@ spec:
               cpu: 100m
               memory: 200Mi
           volumeMounts:
-            - mountPath: /var/log/springcloud/test-provider
-              name: log-path
-            - name: secret-config
-              mountPath: /etc/secrets/test-provider
-              readOnly: true
+            - name: log-path
+              mountPath: /var/log/springcloud/test-provider
+#            - name: secret-config
+#              mountPath: /etc/secrets/test-provider
+#              readOnly: true
       volumes:
         - name: log-path
           hostPath:
             path: /var/log/springcloud/test-provider
-        - name: secret-config
-          secret:
-            secretName: test-provider
+#        - name: secret-config
+#          secret:
+#            secretName: test-provider
 
 
