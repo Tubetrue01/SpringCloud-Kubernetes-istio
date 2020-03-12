@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-vs
+  namespace: zpf
+spec:
+  hosts:
+    - "my.test.com"
+  gateways:
+    - test-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /provider
+      route:
+        - destination:
+            port:
+              number: 8080
+            host: test-provider
