@@ -7,3 +7,5 @@ spring:
         name: test-provider
         namespace: zpf
         enabled: true
+      secrets:
+        paths: /etc/secrets/test-provider

@@ -17,6 +17,9 @@ data:
       configuration:
         map-underscore-to-camel-case: true
         default-statement-timeout: 6000
+    config:
+      username: test
+      password: root
     ---
     spring:
       profiles: dev

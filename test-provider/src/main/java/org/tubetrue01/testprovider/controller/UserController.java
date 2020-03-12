@@ -4,6 +4,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.tubetrue01.pojo.User;
+import org.tubetrue01.testprovider.configuration.ConfigConfiguration;
+import org.tubetrue01.testprovider.configuration.SecretConfiguration;
 import org.tubetrue01.testprovider.service.UserService;
 
 import java.util.List;
@@ -24,8 +26,27 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SecretConfiguration configuration;
+
+    @Autowired
+    private ConfigConfiguration configConfiguration;
+
+    @GetMapping("/secret")
+    public String secret() {
+        log.info("-==访问Secret信息==-");
+        return configuration.getUsername() + " : " + configuration.getPassword();
+    }
+
+    @GetMapping("/config")
+    public String config() {
+        log.info("-==访问config信息==-");
+        return configConfiguration.getUsername() + " : " + configConfiguration.getPassword();
+    }
+
     @GetMapping("/info")
     public List<User> findAll() {
+
         log.info("-==获取用户信息成功！==-");
         return this.userService.findAll();
     }
