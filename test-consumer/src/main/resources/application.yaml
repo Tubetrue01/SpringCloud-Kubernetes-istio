@@ -1,0 +1,10 @@
+server:
+  port: 7070
+  servlet:
+    context-path: /consumer
+spring:
+  application:
+    name: test-consumer
+feign:
+  hystrix:
+    enabled: true

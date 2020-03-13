@@ -28,6 +28,7 @@
     <modules>
         <module>commons</module>
         <module>test-provider</module>
+        <module>test-consumer</module>
     </modules>
 
     <dependencies>
