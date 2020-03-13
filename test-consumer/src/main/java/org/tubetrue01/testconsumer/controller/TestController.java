@@ -25,13 +25,6 @@ public class TestController {
 
     @Autowired
     private RemoteTest remoteTest;
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
-    @GetMapping("/clients")
-    public List<String> clients() {
-        return this.discoveryClient.getServices();
-    }
 
     @GetMapping("/info")
     public List<User> findAll() {
