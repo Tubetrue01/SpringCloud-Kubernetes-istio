@@ -11,9 +11,26 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /provider
+            prefix: /consumer
       route:
         - destination:
-            port:
-              number: 8080
+            host: test-consumer
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-provider
+  namespace: zpf
+spec:
+  hosts:
+    - test-provider
+  http:
+    - route:
+        - destination:
             host: test-provider
+            subset: v1
+          weight: 20
+        - destination:
+            host: test-provider
+            subset: v2
+          weight: 80

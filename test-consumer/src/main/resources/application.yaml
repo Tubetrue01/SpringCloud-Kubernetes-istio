@@ -7,4 +7,4 @@ spring:
     name: test-consumer
 feign:
   hystrix:
-    enabled: true
+    enabled: false

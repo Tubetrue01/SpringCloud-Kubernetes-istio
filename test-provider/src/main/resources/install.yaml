@@ -11,12 +11,12 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-      name: server
+      name: http
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-provider
+  name: test-provider-v1
   namespace: zpf
   labels:
     app: test-provider
