@@ -15,6 +15,11 @@ spec:
       route:
         - destination:
             host: test-consumer
+      fault:
+        abort:
+          httpStatus: 400
+          percentage:
+            value: 50
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -29,8 +34,12 @@ spec:
         - destination:
             host: test-provider
             subset: v1
-          weight: 20
+          weight: 0
         - destination:
             host: test-provider
             subset: v2
-          weight: 80
+          weight: 100
+      fault:
+        delay:
+          fixedDelay: 5s
+          percent: 100

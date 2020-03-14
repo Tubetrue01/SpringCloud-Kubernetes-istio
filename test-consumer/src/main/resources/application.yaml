@@ -8,3 +8,19 @@ spring:
 feign:
   hystrix:
     enabled: false
+  client:
+    config:
+      default:
+        connect-timeout: 9000
+        read-timeout: 9000
+        log-level: full
+        retryer: feign.Retryer.Default
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enable: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 15000
