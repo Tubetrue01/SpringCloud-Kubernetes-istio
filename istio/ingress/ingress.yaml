@@ -1,3 +1,4 @@
+# Notice that you need to install nginx-ingress using helm before your begin follows
 # You can use nginx-ingress to proxy the gateway of istio to avoid expose the node port if you not have external loadbalancer
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
