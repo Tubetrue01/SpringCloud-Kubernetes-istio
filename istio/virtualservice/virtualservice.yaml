@@ -7,7 +7,8 @@ spec:
   hosts:
     - "my.test.com"
   gateways:
-    - test-gateway
+    - ingressgateway.istio-system.svc.cluster.local
+    - mesh
   http:
     - match:
         - uri:
