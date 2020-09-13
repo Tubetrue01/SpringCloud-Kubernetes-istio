@@ -1,20 +1,5 @@
-<Generate Checklist>
-istioctl manifest generate --set values.global.mtls.enabled=false \
---set values.global.jwtPolicy=first-party-jwt \
---set addonComponents.grafana.enabled=true \
---set addonComponents.tracing.enabled=true \
---set addonComponents.kiali.enabled=true > /Users/tubetrue01/Desktop/kubectl/istio/generated-manifest.yaml
+<Install> 
+istioctl install --set profile=demo
 
-<Delete>
-istioctl manifest generate --set values.global.mtls.enabled=false --set values.global.jwtPolicy=first-party-jwt | kubectl delete -f -
-
-<Install>
-istioctl manifest apply --set values.global.mtls.enabled=false \
---set values.global.jwtPolicy=first-party-jwt \
---set addonComponents.grafana.enabled=true \
---set addonComponents.tracing.enabled=true \
---set addonComponents.kiali.enabled=true
-
-
-<Verify instally>
-istioctl verify-install -f /Users/tubetrue01/Desktop/kubectl/istio/generated-manifest.yaml
+<Unisntall>
+istioctl manifest generate --set profile=demo  | kubectl delete -f -
