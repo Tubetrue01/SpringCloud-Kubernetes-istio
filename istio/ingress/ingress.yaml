@@ -20,7 +20,7 @@ spec:
                 port: 
                   number: 80
 ---
-# You can update gateway service by using cluster-ip instead of loadbalancer service by followings
+# You can update gateway service by using cluster-ip instead of loadbalancer service by follows
 apiVersion: v1
 kind: Service
 metadata:
@@ -31,24 +31,20 @@ metadata:
     istio: ingressgateway
     release: istio
 spec:
+  type: ClusterIP
   selector:
     app: istio-ingressgateway
     istio: ingressgateway
-
   ports:
-    - name: status-port
-      port: 15020
-    - name: http2
-      port: 80
-    - name: https
-      port: 443
-    - name: kiali
-      port: 15029
-    - name: prometheus
-      port: 15030
-    - name: grafana
-      port: 15031
-    - name: tracing
-      port: 15032
-    - name: tls
-      port: 15443
+  - name: status-port
+    port: 15021
+  - name: http
+    port: 80
+    targetPort: 8080
+  - name: https
+    port: 443
+    targetPort: 8443
+  - name: tcp
+    port: 31400
+  - name: tls
+    port: 15443
