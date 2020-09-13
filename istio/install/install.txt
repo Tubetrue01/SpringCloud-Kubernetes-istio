@@ -1,5 +1,4 @@
 <Install> 
 istioctl install --set profile=demo
-
 <Unisntall>
 istioctl manifest generate --set profile=demo  | kubectl delete -f -
