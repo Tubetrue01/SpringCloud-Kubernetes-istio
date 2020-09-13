@@ -1,6 +1,6 @@
 # Notice that you need to install nginx-ingress using helm before your begin follows
 # You can use nginx-ingress to proxy the gateway of istio to avoid expose the node port if you not have external loadbalancer
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-ingress
@@ -13,9 +13,12 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: istio-ingressgateway
-              servicePort: 80
+              service:
+                name: istio-ingressgateway
+                port: 
+                  number: 80
 ---
 # You can update gateway service by using cluster-ip instead of loadbalancer service by followings
 apiVersion: v1
